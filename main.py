@@ -51,89 +51,89 @@ def stop_and_restart():
 
 bot.run(main())
 bot.start()
-print("\n\nRadio Player Bot Started, Join @AsmSafone!")
+print("\n\nBot Pemutar Radio Dimulai!")
 bot.send(
     functions.bots.SetBotCommands(
         commands=[
             types.BotCommand(
                 command="start",
-                description="Start The Bot"
+                description="Mulai Bot"
             ),
             types.BotCommand(
                 command="help",
-                description="Show Help Message"
+                description="Tampilkan Pesan Bantuan"
             ),
             types.BotCommand(
                 command="play",
-                description="Play Music From YouTube"
+                description="Putar Musik Dari YouTube"
             ),
             types.BotCommand(
                 command="song",
-                description="Download Music As Audio"
+                description="Unduh Musik Sebagai Audio"
             ),
             types.BotCommand(
                 command="skip",
-                description="Skip The Current Music"
+                description="Lewati Musik Saat Ini"
             ),
             types.BotCommand(
                 command="pause",
-                description="Pause The Current Music"
+                description="Jeda Musik Saat Ini"
             ),
             types.BotCommand(
                 command="resume",
-                description="Resume The Paused Music"
+                description="Lanjutkan Musik yang Dijeda"
             ),
             types.BotCommand(
                 command="radio",
-                description="Start Radio / Live Stream"
+                description="Mulai Radio / Siaran langsung"
             ),
             types.BotCommand(
                 command="current",
-                description="Show Current Playing Song"
+                description="Tampilkan Lagu yang Sedang Diputar"
             ),
             types.BotCommand(
                 command="playlist",
-                description="Show The Current Playlist"
+                description="Tampilkan Daftar Putar Saat Ini"
             ),
             types.BotCommand(
                 command="join",
-                description="Join To The Voice Chat"
+                description="Gabung Ke Obrolan Suara"
             ),
             types.BotCommand(
                 command="leave",
-                description="Leave From The Voice Chat"
+                description="Keluar Dari Obrolan Suara"
             ),
             types.BotCommand(
                 command="stop",
-                description="Stop Playing The Music"
+                description="Berhenti Memutar Musik"
             ),
             types.BotCommand(
                 command="stopradio",
-                description="Stop Radio / Live Stream"
+                description="Hentikan Radio / Siaran Langsung"
             ),
             types.BotCommand(
                 command="replay",
-                description="Replay From The Begining"
+                description="Putar Ulang Dari Awal"
             ),
             types.BotCommand(
                 command="clean",
-                description="Clean Unused RAW PCM Files"
+                description="Bersihkan Cache"
             ),
             types.BotCommand(
                 command="mute",
-                description="Mute Userbot In Voice Chat"
+                description="Bisukan Userbot Dalam Obrolan Suara"
             ),
             types.BotCommand(
                 command="unmute",
-                description="Unmute Userbot In Voice Chat"
+                description="Suarakan Userbot Dalam Obrolan Suara"
             ),
             types.BotCommand(
                 command="volume",
-                description="Change The Voice Chat Volume"
+                description="Ubah Volume Obrolan Suara"
             ),
             types.BotCommand(
                 command="restart",
-                description="Update & Restart Bot (Owner Only)"
+                description="Perbarui & Mulai Ulang Bot (Khusus Pemilik)"
             )
         ]
     )
@@ -141,13 +141,13 @@ bot.send(
 
 @bot.on_message(filters.command(["restart", f"restart@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
 async def restart(client, message):
-    k=await message.reply_text("🔄 **Checking Updates ...**")
+    k=await message.reply_text("🔄 **Memeriksa Pembaruan...**")
     await asyncio.sleep(3)
-    await k.edit("🔄 **Updating, Please Wait...**")
+    await k.edit("🔄 **Memperbarui, Harap Tunggu...**")
     await asyncio.sleep(5)
-    await k.edit("🔄 **Successfully Updated!**")
+    await k.edit("🔄 **Berhasil diperbarui!**")
     await asyncio.sleep(2)
-    await k.edit("🔄 **Now Restarting ...\n\nJoin @AsmSafone For Updates!**")
+    await k.edit("🔄 **Memulai ulang...**")
     try:
         await message.delete()
     except:
@@ -169,4 +169,4 @@ async def restart(client, message):
 
 idle()
 bot.stop()
-print("\n\nRadio Player Bot Stopped, Join @AsmSafone!")
+print("\n\nBot Pemutar Radio Berhenti!")
