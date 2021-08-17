@@ -79,10 +79,10 @@ class MusicPlayer(object):
 
     async def send_playlist(self):
         if not playlist:
-            pl = f"{emoji.NO_ENTRY} **Empty Playlist!**"
+            pl = f"{emoji.NO_ENTRY} **Daftar putar kosong!**"
         else:       
-            pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  - **Requested By:** {x[4]}\n"
+            pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
+                f"**{i}**. **{x[1]}**\n  - **Diminta oleh:** {x[4]}\n"
                 for i, x in enumerate(playlist)
             ])
         if msg.get('playlist') is not None:
@@ -151,7 +151,7 @@ class MusicPlayer(object):
                     original_file=path.join("downloads", f"{info['id']}.{info['ext']}")
                 except Exception as e:
                     playlist.pop(1)
-                    print(f"Unable To Download Due To {e} & Skipped!")
+                    print(f"Tidak Dapat Mengunduh Karena {e} & Dilewati!")
                     if len(playlist) == 1:
                         return
                     await self.download_audio(playlist[1])
@@ -218,10 +218,10 @@ class MusicPlayer(object):
         while True:
             await sleep(10)
             if CALL_STATUS.get(CHAT):
-                print("Succesfully Joined VC !")
+                print("Berhasil Bergabung VC!")
                 break
             else:
-                print("Connecting, Please Wait ...")
+                print("Menghubungkan, Harap Tunggu...")
                 await self.start_call()
                 continue
 
