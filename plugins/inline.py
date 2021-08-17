@@ -27,14 +27,14 @@ from config import Config
 REPLY_MESSAGE=Config.REPLY_MESSAGE
 buttons = [
             [
-                InlineKeyboardButton("❔ HOW TO USE ME ❔", callback_data="help"),
+                InlineKeyboardButton("❔ CARA PENGGUNAAN ❔", callback_data="help"),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
+                InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
+                InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("🤖 MAKE YOUR OWN BOT 🤖", url="https://heroku.com/deploy?template=https://github.com/AsmSafone/RadioPlayerV3"),
+                InlineKeyboardButton("GABUT? SINI JOIN!", url="https://t.me/AnonyMeetChat"),
             ]
          ]
 
@@ -42,12 +42,12 @@ buttons = [
 @Client.on_inline_query()
 async def search(client, query):
     answers = []
-    if query.query == "SAF_ONE":
+    if query.query == "P":
         answers.append(
             InlineQueryResultArticle(
-                title="Deploy Your Own Radio Player",
-                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                input_message_content=InputTextMessageContent(f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @SafoTheBot 👑</b>", disable_web_page_preview=True),
+                title="Bio ini ditulis oleh tangan yang belum pernah kamu genggam.",
+                thumb_url="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg",
+                input_message_content=InputTextMessageContent(f"{REPLY_MESSAGE}\n\n<b>© Powered by railway.app</b>", disable_web_page_preview=True),
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
@@ -58,7 +58,7 @@ async def search(client, query):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text=("Type An Song Name ?"),
+            switch_pm_text=("Ketik Nama Lagu?"),
             switch_pm_parameter="help",
             cache_time=0
         )
@@ -68,7 +68,7 @@ async def search(client, query):
             answers.append(
                 InlineQueryResultArticle(
                     title=v["title"],
-                    description=("Duration: {} Views: {}").format(
+                    description=("Durasi: {} Penonton: {}").format(
                         v["duration"],
                         v["viewCount"]["short"]
                     ),
@@ -89,7 +89,7 @@ async def search(client, query):
             await query.answer(
                 results=answers,
                 cache_time=0,
-                switch_pm_text=("Error: Search Timed Out!"),
+                switch_pm_text=("Error: Waktu Pencarian Habis!"),
                 switch_pm_parameter="",
             )
 
