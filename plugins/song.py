@@ -68,7 +68,7 @@ async def song(client, message):
             title = results[0]["title"]
             thumbnail = results[0]["thumbnails"][0]
             duration = results[0]["duration"]
-            views = results[0]["ditonton"]
+            views = results[0]["views"]
 
             ## UNCOMMENT THIS IF YOU WANT A LIMIT ON DURATION. CHANGE 1800 TO YOUR OWN PREFFERED DURATION AND EDIT THE MESSAGE (30 minutes cap) LIMIT IN SECONDS
             # if time_to_seconds(duration) >= 1800:  # duration limit
