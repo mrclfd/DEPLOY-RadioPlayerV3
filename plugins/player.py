@@ -577,5 +577,5 @@ async def not_chat(_, m: Message):
                 InlineKeyboardButton("GABUT? SINI JOIN!", url="https://t.me/AnonyMeetChat"),
             ]
          ]
-    k=await m.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption="**Maaf, Bot ini tidak menerima pesan, Harap hubungi admin @ngeringerong. Thx❤.\n\n- `Bot`**", reply_markup=InlineKeyboardMarkup(buttons))
+    k=await m.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption="**Maaf, Bot ini tidak menerima pesan, Harap hubungi admin @ngeringerong. Thx ❤.**", reply_markup=InlineKeyboardMarkup(buttons))
     await mp.delete(m)
