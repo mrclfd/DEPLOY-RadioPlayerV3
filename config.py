@@ -32,7 +32,7 @@ ydl_opts = {
 ydl = YoutubeDL(ydl_opts)
 links=[]
 finalurl=""
-STREAM=os.environ.get("STREAM_URL", "http://peridot.streamguys.com:7150/Mirchi")
+STREAM=os.environ.get("STREAM_URL", "https://www.youtube.com/watch?v=L9Q1HUdUMp0")
 regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
 match = re.match(regex,STREAM)
 if match:
@@ -64,11 +64,11 @@ class Config:
     EDIT_TITLE=os.environ.get("EDIT_TITLE", True)
     if EDIT_TITLE == "False":
         EDIT_TITLE=None
-    RADIO_TITLE=os.environ.get("RADIO_TITLE", "Music 24/7 | Radio Mode")
+    RADIO_TITLE=os.environ.get("RADIO_TITLE", "24/7 | MODE RADIO/LIVE YT")
     if RADIO_TITLE == "False":
         RADIO_TITLE=None
-    DURATION_LIMIT=int(os.environ.get("MAXIMUM_DURATION", 15))
-    DELAY = int(os.environ.get("DELAY", 10))
+    DURATION_LIMIT=int(os.environ.get("MAXIMUM_DURATION", 120))
+    DELAY = int(os.environ.get("DELAY", 5))
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "") 
     SESSION = os.environ.get("SESSION_STRING", "")
