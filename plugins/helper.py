@@ -27,38 +27,36 @@ CHAT=Config.CHAT
 ADMINS=Config.ADMINS
 playlist=Config.playlist
 
-HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**,\n\nI'm **Radio Player V3.0** \nI Can Play Radio / Music / YouTube Live In Channel & Group 24x7 Nonstop. Made with ❤️ By @AsmSafone 😉!"
+HOME_TEXT = "👋🏻 **Hai [{}](tg://user?id={})**,\n\nSaya **Gentho Music Bot** \nSaya Dapat Memutar Radio / Musik / Siaran Langsung YouTube di Channel & Group 24x7 Nonstop."
 HELP_TEXT = """
-🎧 --**Need Help ?**--
-(Join @SafoTheBot For Support)
+--**BANTUAN PENGGUNAAN PERINTAH**--
 
-🏷️ --**Common Commands**-- :
+--**Perintah Umum**-- :
 
-\u2022 `/play` - reply to an audio or youTube link to play it or use /play [song name]
-\u2022 `/help` - shows help for commands
-\u2022 `/song` [song name] - download the song as audio track
-\u2022 `/current` - shows playing time of current track
-\u2022 `/playlist` - shows the current playlist with controls
+\u2022 `/play` - membalas audio atau tautan YouTube untuk memutarnya atau menggunakan /play [judul lagu]
+\u2022 `/help` - menunjukkan bantuan untuk perintah
+\u2022 `/song` [judul lagu] - unduh lagu sebagai trek audio
+\u2022 `/current` - menunjukkan waktu pemutaran trek saat ini
+\u2022 `/playlist` - menunjukkan daftar putar saat ini dengan kontrol
 
-🏷️ --**Admin Commands**-- :
+--**Perintah Khusus Admin**-- :
 
-\u2022 `/radio` - start radio stream
-\u2022 `/stopradio` - stop radio stream
-\u2022 `/skip` - skip current music
-\u2022 `/join` - join the voice chat
-\u2022 `/leave` - leave the voice chat
-\u2022 `/stop` - stop playing music
-\u2022 `/volume` - change volume (0-200)
-\u2022 `/replay` - play from the beginning
-\u2022 `/clean` - remove unused raw files
-\u2022 `/pause` - pause playing music
-\u2022 `/resume` - resume playing music
-\u2022 `/mute` - mute the vc userbot
-\u2022 `/unmute` - unmute the vc userbot
-\u2022 `/restart` - update & restart the bot
+\u2022 `/radio` - mulai siaran radio
+\u2022 `/stopradio` - hentikan siaran radio
+\u2022 `/skip` - lewati musik yang sedang diputar
+\u2022 `/join` - bergabung ke obrolan suara
+\u2022 `/leave` - keluar dari obrolan suara
+\u2022 `/stop` - berhenti memutar musik
+\u2022 `/volume` - atur volume (0-200)
+\u2022 `/replay` - putar dari awal
+\u2022 `/clean` - bersihkan cache
+\u2022 `/pause` - jeda memutar musik
+\u2022 `/resume` - lanjutkan memutar musik
+\u2022 `/mute` - bisukan obrolan suara userbot
+\u2022 `/unmute` - suarakan obrolan suara userbot
+\u2022 `/restart` - perbarui & mulai ulang bot
 
-© **Powered By** : 
-**@AsmSafone | @SafoTheBot** 👑
+© **Bot based on @SafoTheBot**
 """
 
 
@@ -66,7 +64,7 @@ HELP_TEXT = """
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.from_user.id not in Config.ADMINS and query.data != "help":
         await query.answer(
-            "You're Not Allowed! 🤣",
+            "Anda Tidak Diizinkan!",
             show_alert=True
             )
         return
@@ -78,10 +76,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         group_call.restart_playout()
         if not playlist:
-            pl = f"{emoji.NO_ENTRY} **Empty Playlist!**"
+            pl = f"{emoji.NO_ENTRY} **Daftar Putar Kosong!**"
         else:
-            pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  - **Requested By:** {x[4]}"
+            pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
+                f"**{i}**. **{x[1]}**\n  - **Permintaan dari:** {x[4]}"
                 for i, x in enumerate(playlist)
                 ])
         await query.edit_message_text(
