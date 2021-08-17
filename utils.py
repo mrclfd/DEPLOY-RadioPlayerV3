@@ -82,7 +82,7 @@ class MusicPlayer(object):
             pl = f"{emoji.NO_ENTRY} **Daftar putar kosong!**"
         else:       
             pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  - **Diminta oleh:** {x[4]}\n"
+                f"**{i}**. **{x[1]}**\n  - **Permintaan dari:** {x[4]}\n"
                 for i, x in enumerate(playlist)
             ])
         if msg.get('playlist') is not None:
