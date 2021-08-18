@@ -91,7 +91,7 @@ async def yplay(_, message: Message):
                 type="query"
                 ysearch=query
         else:
-            d=await message.reply_text("❗️ __Anda Tidak Memberi Saya Lagu Untuk Diputar, Kirimi Saya File Audio atau Balas dan Ketik `/play` Ke File Audio!__")
+            d=await message.reply_text("❗️ __Anda Tidak Memberi Saya Lagu Untuk Diputar, Kirimi Saya File Audio atau Balas dan Ketik /play Ke File Audio!__")
             await mp.delete(d)
             await mp.delete(message)
             return
@@ -139,7 +139,7 @@ async def yplay(_, message: Message):
                 f"{file}.raw"
             )
             await m_status.delete()
-            print(f"- START PLAYING: {playlist[0][1]}")
+            print(f"- MULAI MEMUTAR: {playlist[0][1]}")
         if not playlist:
             pl = f"{emoji.NO_ENTRY} **Daftar Putar Kosong!**"
         else:   
@@ -200,7 +200,7 @@ async def yplay(_, message: Message):
         duration = round(info["duration"] / 60)
         title= info["title"]
         if int(duration) > DURATION_LIMIT:
-            k=await message.reply_text(f"❌ __Video Lebih Panjang Dari {DURATION_LIMIT} Menit Tidak Diperbolehkan, Video yang Diperbolehkan {duration} Minute(s)!__")
+            k=await message.reply_text(f"❌ __Video Lebih Panjang Dari {DURATION_LIMIT} Menit Tidak Diperbolehkan, Video yang Diperbolehkan {duration} Menit!__")
             await mp.delete(k)
             await mp.delete(message)
             return
