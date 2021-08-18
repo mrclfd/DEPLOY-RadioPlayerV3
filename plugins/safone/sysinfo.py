@@ -30,7 +30,7 @@ from psutil._common import bytes2human
 timezone = pytz.timezone("Asia/Jakarta")
 
 START_TIME = datetime.now(timezone)
-START_TIME_ISO = START_TIME
+START_TIME_ISO = START_TIME.strftime("%Y-%m-%d %H:%M:%S")
 TIME_DURATION_UNITS = (
     ('week', 60 * 60 * 24 * 7),
     ('day', 60 * 60 * 24),
