@@ -19,13 +19,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 import asyncio
 from datetime import datetime
 from time import time
+from pytz import pytz
 from config import Config
 from pyrogram import Client, filters, emoji
 from pyrogram.types import Message
 import psutil
 from psutil._common import bytes2human
 
-START_TIME = datetime.utcnow()
+# timezone location
+timezone = pytz.timezone("Asia/Jakarta")
+
+START_TIME = datetime.now(timezone)
 START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
 TIME_DURATION_UNITS = (
     ('week', 60 * 60 * 24 * 7),
