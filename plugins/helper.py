@@ -46,7 +46,7 @@ HELP_TEXT = """
 \u2022 `/leave` - keluar dari obrolan suara
 \u2022 `/stop` - berhenti memutar musik
 \u2022 `/volume` - atur volume (0-200)
-\u2022 `/ replay` - putar dari awal
+\u2022 `/replay` - putar dari awal
 \u2022 `/clean` - bersihkan cache
 \u2022 `/pause` - jeda memutar musik
 \u2022 `/resume` - lanjutkan memutar musik
