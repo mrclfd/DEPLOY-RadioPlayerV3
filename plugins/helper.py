@@ -29,16 +29,16 @@ playlist=Config.playlist
 
 HOME_TEXT = "👋🏻 **Hai [{}](tg://user?id={})**,\n\nSaya **Gentho Music Bot** \nSaya Dapat Memutar Radio / Musik / Siaran Langsung YouTube di Channel & Group 24x7 Nonstop."
 HELP_TEXT = """
-🤖 **BANTUAN PENGGUNAAN PERINTAH** 🎶
+🤖 **BANTUAN PENGGUNAAN PERINTAH** 🤖
 
-🕊 --**Perintah Umum**-- :
+--**Perintah Umum**-- :
 \u2022 `/play` - membalas file audio atau tautan YouTube untuk memutarnya atau menggunakan /play [judul lagu]
 \u2022 `/help` - menunjukkan bantuan untuk perintah
 \u2022 `/song` [judul lagu] - unduh lagu sebagai trek audio
 \u2022 `/current` - menunjukkan waktu pemutaran trek saat ini
 \u2022 `/playlist` - menunjukkan daftar putar saat ini dengan kontrol
 
-🕊 --**Perintah Khusus Admin**-- :
+--**Perintah Khusus Admin**-- :
 \u2022 `/radio` - mulai siaran radio
 \u2022 `/stopradio` - hentikan siaran radio
 \u2022 `/skip` - lewati musik yang sedang diputar
