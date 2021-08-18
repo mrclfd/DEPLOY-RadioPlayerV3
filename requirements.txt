@@ -11,4 +11,3 @@ wget
 aiohttp
 requests
 python-dotenv
-pytz
