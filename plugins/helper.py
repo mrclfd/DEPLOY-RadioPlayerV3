@@ -46,7 +46,7 @@ HELP_TEXT = """
 \u2022 `/leave` - keluar dari obrolan suara
 \u2022 `/stop` - berhenti memutar musik
 \u2022 `/volume` - atur volume (0-200)
-\u2022 `/replay` - putar dari awal
+\u2022 `/ replay` - putar dari awal
 \u2022 `/clean` - bersihkan cache
 \u2022 `/pause` - jeda memutar musik
 \u2022 `/resume` - lanjutkan memutar musik
@@ -176,7 +176,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.edit_message_text(
             HELP_TEXT,
-            disable_web_page_preview=True,
             reply_markup=reply_markup
 
         )
@@ -216,6 +215,6 @@ async def help(client, message):
     reply_markup = InlineKeyboardMarkup(buttons)
     if msg.get('help') is not None:
         await msg['help'].delete()
-    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", disable_web_page_preview=True, caption=HELP_TEXT, reply_markup=reply_markup)
+    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption=HELP_TEXT, reply_markup=reply_markup)
     await mp.delete(message)
 
