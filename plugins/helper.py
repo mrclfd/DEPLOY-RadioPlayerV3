@@ -29,10 +29,10 @@ playlist=Config.playlist
 
 HOME_TEXT = "👋🏻 **Hai [{}](tg://user?id={})**,\n\nSaya **Gentho Music Bot** \nSaya Dapat Memutar Radio / Musik / Siaran Langsung YouTube di Channel & Group 24x7 Nonstop."
 HELP_TEXT = """
-**BANTUAN PENGGUNAAN PERINTAH**
+--**BANTUAN PENGGUNAAN PERINTAH**--
 
 --**Perintah Umum**-- :
-\u2022 `/play` - membalas audio atau tautan YouTube untuk memutarnya atau menggunakan `/play [judul lagu]`
+\u2022 `/play` - membalas file audio atau tautan YouTube untuk memutarnya atau menggunakan /play [judul lagu]
 \u2022 `/help` - menunjukkan bantuan untuk perintah
 \u2022 `/song` [judul lagu] - unduh lagu sebagai trek audio
 \u2022 `/current` - menunjukkan waktu pemutaran trek saat ini
@@ -176,6 +176,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.edit_message_text(
             HELP_TEXT,
+            disable_web_page_preview=True,
             reply_markup=reply_markup
 
         )
@@ -187,7 +188,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 @Client.on_message(filters.command(["start", f"start@{USERNAME}"]))
 async def start(client, message):
     buttons = [
-             [
+            [
                 InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
                 InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
@@ -209,15 +210,12 @@ async def help(client, message):
                 InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                    InlineKeyboardButton(
-                        text="CARA PENGGUNAAN",
-                        callback_data="help_callback",
-                    ),
-                ]
+                InlineKeyboardButton("CARA PENGGUNAAN", callback_data="help"),
+            ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
     if msg.get('help') is not None:
         await msg['help'].delete()
-    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption=HELP_TEXT, reply_markup=reply_markup)
+    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", disable_web_page_preview=True, caption=HELP_TEXT, reply_markup=reply_markup)
     await mp.delete(message)
 
