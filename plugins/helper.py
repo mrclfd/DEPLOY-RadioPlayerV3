@@ -209,8 +209,11 @@ async def help(client, message):
                 InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("CARA PENGGUNAAN", text="help"),
-            ]
+                    InlineKeyboardButton(
+                        text="CARA PENGGUNAAN",
+                        callback_data="help_callback",
+                    ),
+                ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
     if msg.get('help') is not None:
