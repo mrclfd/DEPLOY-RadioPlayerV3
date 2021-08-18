@@ -29,6 +29,7 @@ from pyrogram.raw import functions, types
 
 CHAT=Config.CHAT
 ADMINS=Config.ADMINS
+LOG_GROUP=Config.LOG_GROUP
 
 bot = Client(
     "RadioPlayer",
@@ -85,7 +86,7 @@ bot.send(
             ),
             types.BotCommand(
                 command="radio",
-                description="Mulai Radio / Siaran langsung"
+                description="Mulai Radio/Siaran langsung"
             ),
             types.BotCommand(
                 command="current",
@@ -109,7 +110,7 @@ bot.send(
             ),
             types.BotCommand(
                 command="stopradio",
-                description="Hentikan Radio / Siaran Langsung"
+                description="Hentikan Radio/Siaran Langsung"
             ),
             types.BotCommand(
                 command="replay",
@@ -139,7 +140,7 @@ bot.send(
     )
 )
 
-@bot.on_message(filters.command(["restart", f"restart@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
+@bot.on_message(filters.command(["restart", f"restart@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private | filters.chat(LOG_GROUP)))
 async def restart(client, message):
     k=await message.reply_text("🔄 **Memeriksa Pembaruan...**")
     await asyncio.sleep(3)
@@ -165,7 +166,6 @@ async def restart(client, message):
     Thread(
         target=stop_and_restart
         ).start()    
-
 
 idle()
 bot.stop()
