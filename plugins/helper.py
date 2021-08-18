@@ -197,10 +197,8 @@ async def start(client, message):
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
     m=await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption=HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
-    await asyncio.sleep(60)
-    try:
-        await mp.delete(m)
-        await mp.delete(message)
+    await mp.delete(m)
+    await mp.delete(message)
 
 
 @Client.on_message(filters.command(["help", f"help@{USERNAME}"]))
