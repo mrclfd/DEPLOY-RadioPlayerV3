@@ -67,7 +67,7 @@ async def generate_sysinfo(workdir):
     # CPU
     cpu_freq = psutil.cpu_freq().current
     if cpu_freq >= 1000:
-        cpu_freq = f"{round(cpu_freq /  2)}GHz"
+        cpu_freq = f"{round(cpu_freq / 1000, 2)}GHz"
     else:
         cpu_freq = f"{round(cpu_freq, 2)}MHz"
     info['CPU     :'] = (
@@ -141,8 +141,8 @@ async def get_uptime(_, m: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     await m.reply_text(
         f"{emoji.ROBOT} @GenthoMusicBot\n"
-        f"Waktu aktif   : `{uptime}`\n"
-        f"Dimulai ulang : `{START_TIME_ISO}`"
+        f"Waktu aktif: `{uptime}`\n"
+        f"Dimulai ulang: `{START_TIME_ISO}`"
     )
 
 
