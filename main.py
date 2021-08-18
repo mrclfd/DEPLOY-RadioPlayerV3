@@ -52,7 +52,7 @@ def stop_and_restart():
 
 bot.run(main())
 bot.start()
-print("\n\nBot Pemutar Radio Dimulai!")
+print("\n\n@GenthoMusicBot Berjalan!")
 bot.send(
     functions.bots.SetBotCommands(
         commands=[
@@ -169,4 +169,4 @@ async def restart(client, message):
 
 idle()
 bot.stop()
-print("\n\nBot Pemutar Radio Berhenti!")
+print("\n\n@GenthoMusicBot Berhenti!")
