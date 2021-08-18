@@ -33,11 +33,11 @@ timezone = pytz.timezone("Asia/Jakarta")
 START_TIME = datetime.now(timezone)
 START_TIME_ISO = START_TIME.strftime("%Y-%m-%d %H:%M:%S")
 TIME_DURATION_UNITS = (
-    ('week', 60 * 60 * 24 * 7),
-    ('day', 60 * 60 * 24),
-    ('hour', 60 * 60),
-    ('min', 60),
-    ('sec', 1)
+    ('minggu', 60 * 60 * 24 * 7),
+    ('hari', 60 * 60 * 24),
+    ('jam', 60 * 60),
+    ('menit', 60),
+    ('detik', 1)
 )
 
 self_or_contact_filter = filters.create(
@@ -53,8 +53,8 @@ async def _human_time_duration(seconds):
     for unit, div in TIME_DURATION_UNITS:
         amount, seconds = divmod(int(seconds), div)
         if amount > 0:
-            parts.append('{} {}{}'
-                         .format(amount, unit, "" if amount == 1 else "s"))
+            parts.append('{} {}{}'                              #else "s"))
+                         .format(amount, unit, "" if amount == 1 else ""))
     return ', '.join(parts)
 
 
@@ -79,7 +79,7 @@ async def generate_sysinfo(workdir):
     vm = psutil.virtual_memory()
     sm = psutil.swap_memory()
     info['RAM     :'] = (f"{bytes2human(vm.total)}, "
-                   f"{bytes2human(vm.available)} available")
+                   f"{bytes2human(vm.available)} tersedia")
     info['Swap    :'] = f"{bytes2human(sm.total)}, {sm.percent}%"
     # Disks
     du = psutil.disk_usage(workdir)
