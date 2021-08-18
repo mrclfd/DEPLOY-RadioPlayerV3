@@ -26,15 +26,12 @@ from config import Config
 
 REPLY_MESSAGE=Config.REPLY_MESSAGE
 buttons = [
-            [
-                InlineKeyboardButton("❔ CARA PENGGUNAAN ❔", callback_data="help"),
-            ],
-            [
+           [
                 InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
                 InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("GABUT? SINI JOIN!", url="https://t.me/AnonyMeetChat"),
+                InlineKeyboardButton("CARA PENGGUNAAN", callback_data="help"),
             ]
          ]
 
