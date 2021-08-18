@@ -29,12 +29,6 @@ from psutil._common import bytes2human
 # timezone location
 timezone = pytz.timezone("Asia/Jakarta")
 
-
-fmt = '%Y-%m-%d %H:%M:%S %Z%z'
-
-
-
-
 START_TIME = datetime.now(timezone)
 START_TIME_ISO = START_TIME
 TIME_DURATION_UNITS = (
@@ -96,7 +90,7 @@ async def generate_sysinfo(workdir):
     # uptime
     info = {
         'boot': (datetime.fromtimestamp(psutil.boot_time())
-                 .strftime("%Y-%m-%d %H:%M:%S"))
+                 .strftime("%Y-%m-%d %H:%M:%S %Z%z"))
     }
     # CPU
     cpu_freq = psutil.cpu_freq().current
