@@ -135,7 +135,7 @@ async def ping_pong(_, m: Message):
     & filters.regex("^!uptime$")
     )
 async def get_uptime(_, m: Message):
-    current_time = datetime.utcnow()
+    current_time = datetime.now(timezone)
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await m.reply_text(
