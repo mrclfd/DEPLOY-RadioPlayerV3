@@ -29,18 +29,16 @@ playlist=Config.playlist
 
 HOME_TEXT = "👋🏻 **Hai [{}](tg://user?id={})**,\n\nSaya **Gentho Music Bot** \nSaya Dapat Memutar Radio / Musik / Siaran Langsung YouTube di Channel & Group 24x7 Nonstop."
 HELP_TEXT = """
---**BANTUAN PENGGUNAAN PERINTAH**--
+**BANTUAN PENGGUNAAN PERINTAH**
 
 --**Perintah Umum**-- :
-
-\u2022 `/play` - membalas audio atau tautan YouTube untuk memutarnya atau menggunakan /play [judul lagu]
+\u2022 `/play` - membalas audio atau tautan YouTube untuk memutarnya atau menggunakan `/play [judul lagu]`
 \u2022 `/help` - menunjukkan bantuan untuk perintah
 \u2022 `/song` [judul lagu] - unduh lagu sebagai trek audio
 \u2022 `/current` - menunjukkan waktu pemutaran trek saat ini
 \u2022 `/playlist` - menunjukkan daftar putar saat ini dengan kontrol
 
 --**Perintah Khusus Admin**-- :
-
 \u2022 `/radio` - mulai siaran radio
 \u2022 `/stopradio` - hentikan siaran radio
 \u2022 `/skip` - lewati musik yang sedang diputar
@@ -56,7 +54,7 @@ HELP_TEXT = """
 \u2022 `/unmute` - suarakan obrolan suara userbot
 \u2022 `/restart` - perbarui & mulai ulang bot
 
-© **Bot based on @SafoTheBot**
+© **Bot Based on [AsmSafone](https://github.com/AsmSafone)**
 """
 
 
@@ -102,11 +100,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         else:
             mp.group_call.pause_playout()
-            pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  **Requested By:** {x[4]}"
+            pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
+                f"**{i}**. **{x[1]}**\n  **Permintaan dari:** {x[4]}"
                 for i, x in enumerate(playlist)
                 ])
-        await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Paused !**\n\n{pl}",
+        await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Dijeda!**\n\n{pl}",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -124,11 +122,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         else:
             mp.group_call.resume_playout()
-            pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  - **Requested By:** {x[4]}"
+            pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
+                f"**{i}**. **{x[1]}**\n  - **Permintaan dari:** {x[4]}"
                 for i, x in enumerate(playlist)
                 ])
-        await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Resumed !**\n\n{pl}",
+        await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Dilanjutkan!**\n\n{pl}",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -146,12 +144,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         else:
             await mp.skip_current_playing()
-            pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                f"**{i}**. **{x[1]}**\n  - **Requested By:** {x[4]}"
+            pl = f"{emoji.PLAY_BUTTON} **Daftar putar**:\n" + "\n".join([
+                f"**{i}**. **{x[1]}**\n  - **Permintaan dari:** {x[4]}"
                 for i, x in enumerate(playlist)
                 ])
         try:
-            await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Skipped !**\n\n{pl}",
+            await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} **Dilewati!**\n\n{pl}",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -168,15 +166,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data=="help":
         buttons = [
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
+                InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
+                InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/AsmSafone/RadioPlayerV3"),
-            ],
-            [
-                InlineKeyboardButton("CLOSE 🔐", callback_data="close"),
+                InlineKeyboardButton("TUTUP PESAN", callback_data="close"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -193,43 +187,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
 @Client.on_message(filters.command(["start", f"start@{USERNAME}"]))
 async def start(client, message):
     buttons = [
-            [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
+             [
+                InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
+                InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/AsmSafone/RadioPlayerV3"),
-            ],
-            [
-                InlineKeyboardButton("❔ HOW TO USE ❔", callback_data="help"),
+                InlineKeyboardButton("CARA PENGGUNAAN", callback_data="help"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    m=await message.reply_photo(photo="https://telegra.ph/file/4e839766d45935998e9c6.jpg", caption=HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
-    await mp.delete(m)
-    await mp.delete(message)
-
+    m=await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption=HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
+    await asyncio.sleep(60)
+    try:
+        await mp.delete(m)
+        await mp.delete(message)
 
 
 @Client.on_message(filters.command(["help", f"help@{USERNAME}"]))
 async def help(client, message):
     buttons = [
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/SafoTheBot"),
+                InlineKeyboardButton("OWNER", url="https://t.me/ngeringerong"),
+                InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/AsmSafone/RadioPlayerV3"),
-            ],
-            [
-                InlineKeyboardButton("CLOSE 🔐", callback_data="close"),
+                InlineKeyboardButton("TUTUP PESAN", callback_data="close"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
     if msg.get('help') is not None:
         await msg['help'].delete()
-    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/4e839766d45935998e9c6.jpg", caption=HELP_TEXT, reply_markup=reply_markup)
+    msg['help'] = await message.reply_photo(photo="https://telegra.ph/file/5a00f37d0a84d381f0e57.jpg", caption=HELP_TEXT, reply_markup=reply_markup)
     await mp.delete(message)
 
