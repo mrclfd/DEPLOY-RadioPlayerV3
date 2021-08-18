@@ -30,7 +30,7 @@ from psutil._common import bytes2human
 timezone = pytz.timezone("Asia/Jakarta")
 
 START_TIME = datetime.now(timezone)
-START_TIME_ISO = START_TIME
+START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
 TIME_DURATION_UNITS = (
     ('week', 60 * 60 * 24 * 7),
     ('day', 60 * 60 * 24),
@@ -57,45 +57,16 @@ async def _human_time_duration(seconds):
     return ', '.join(parts)
 
 
-@Client.on_message(filters.text
-                   & self_or_contact_filter
-                   & ~filters.edited
-                   & ~filters.bot
-                   & filters.regex("^.ping$"))
-async def ping_pong(_, m: Message):
-    start = time()
-    m_reply = await m.reply_text("Pong!")
-    delta_ping = time() - start
-    await m_reply.edit_text(
-        f"{emoji.ROBOT} **Ping** : `{delta_ping * 1000:.3f} ms`"
-    )
-
-
-@Client.on_message(filters.text
-                   & self_or_contact_filter
-                   & ~filters.edited
-                   & ~filters.bot
-                   & filters.regex("^.uptime$"))
-async def get_uptime(_, m: Message):
-    current_time = datetime.now(timezone)
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-    await m.reply_text(
-        f"{emoji.ROBOT} Radio Player V3.0\n"
-        f"- Uptime: `{uptime}`\n"
-        f"- Restarted: `{START_TIME_ISO}`"
-    )
-
 async def generate_sysinfo(workdir):
     # uptime
     info = {
-        'boot': (datetime.fromtimestamp(psutil.boot_time())
-                 .strftime("%Y-%m-%d %H:%M:%S %Z%z"))
+        'boot': (datetime.now(timezone).fromtimestamp(psutil.boot_time())
+                 .strftime("%Y-%m-%d %H:%M:%S"))
     }
     # CPU
     cpu_freq = psutil.cpu_freq().current
     if cpu_freq >= 1000:
-        cpu_freq = f"{round(cpu_freq / 1000, 2)}GHz"
+        cpu_freq = f"{round(cpu_freq /  2)}GHz"
     else:
         cpu_freq = f"{round(cpu_freq, 2)}MHz"
     info['cpu'] = (
@@ -137,11 +108,51 @@ async def generate_sysinfo(workdir):
             + "```")
 
 
-@Client.on_message(filters.text
-                   & self_or_contact_filter
-                   & ~filters.edited
-                   & ~filters.via_bot
-                   & filters.regex("^.sysinfo$"))
+
+@Client.on_message(
+    filters.group
+    & filters.text
+    & self_or_contact_filter
+    & ~filters.edited
+    & ~filters.bot
+    & filters.regex("^!ping$")
+    )
+async def ping_pong(_, m: Message):
+    start = time()
+    m_reply = await m.reply_text("Pong!")
+    delta_ping = time() - start
+    await m_reply.edit_text(
+        f"{emoji.ROBOT} **Ping** : `{delta_ping * 1000:.3f} ms`"
+    )
+
+
+@Client.on_message(
+    filters.group
+    & filters.text
+    & self_or_contact_filter
+    & ~filters.edited
+    & ~filters.bot
+    & filters.regex("^!uptime$")
+    )
+async def get_uptime(_, m: Message):
+    current_time = datetime.utcnow()
+    uptime_sec = (current_time - START_TIME).total_seconds()
+    uptime = await _human_time_duration(int(uptime_sec))
+    await m.reply_text(
+        f"{emoji.ROBOT} Radio Player V3.0\n"
+        f"- Uptime: `{uptime}`\n"
+        f"- Restarted: `{START_TIME_ISO}`"
+    )
+
+
+@Client.on_message(
+    filters.group
+    & filters.text
+    & self_or_contact_filter
+    & ~filters.edited
+    & ~filters.bot
+    & filters.regex("^!sysinfo$")
+    )
 async def get_sysinfo(client, m):
     response = "**System Information**:\n"
     m_reply = await m.reply_text(f"{response}`...`")
