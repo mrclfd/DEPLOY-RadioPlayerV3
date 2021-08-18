@@ -84,12 +84,22 @@ async def song(client, message):
         except Exception as e:
             print(e)
             await k.edit('❌ **Lagu Tidak Ditemukan! \nSilakan Gunakan Ejaan yang Benar atau Coba Cari Lagu Lain.**') 
+            
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+            await mp.delete(k)
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+
             return
     except Exception as e:
         await k.edit(
             "❗ **Masukkan Nama Lagu!** \nMisalnya: `/song Terminal Sukoharjo`"
         )
         print(str(e))
+        
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+            await mp.delete(k)
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+
         return
     await k.edit("📥 **Mengunduh Lagu...**")
     try:
