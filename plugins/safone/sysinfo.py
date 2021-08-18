@@ -17,8 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
 
 import asyncio
-from datetime import datetime
-from time import time
+from datetime import datetime, timedelta
+from pytz import timezone
 import pytz
 from config import Config
 from pyrogram import Client, filters, emoji
@@ -28,6 +28,12 @@ from psutil._common import bytes2human
 
 # timezone location
 timezone = pytz.timezone("Asia/Jakarta")
+
+
+fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+
+
+
 
 START_TIME = datetime.now(timezone)
 START_TIME_ISO = START_TIME
