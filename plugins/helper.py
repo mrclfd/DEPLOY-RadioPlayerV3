@@ -210,6 +210,7 @@ async def help(client, message):
             ],
             [
                 InlineKeyboardButton("TUTUP PESAN", callback_data="close"),
+                InlineKeyboardButton("TES", show_alert="P"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
