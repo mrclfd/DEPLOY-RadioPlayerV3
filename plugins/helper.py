@@ -209,7 +209,7 @@ async def help(client, message):
                 InlineKeyboardButton("GROUP", url="https://t.me/bermusikria"),
             ],
             [
-                InlineKeyboardButton("TUTUP PESAN", text="P TOD, INI TESSS!!!"),
+                InlineKeyboardButton("CARA PENGGUNAAN", text="help"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
