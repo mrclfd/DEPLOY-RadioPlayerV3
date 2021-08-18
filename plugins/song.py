@@ -84,12 +84,22 @@ async def song(client, message):
         except Exception as e:
             print(e)
             await k.edit('❌ **Lagu Tidak Ditemukan! \nSilakan Gunakan Ejaan yang Benar atau Coba Cari Lagu Lain.**')
+            
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+            await mp.delete(k)
+            #peeeeeeeeeeeeeeeeeeeeeeeeee
+            
             return
     except Exception as e:
         await k.edit(
             "❗ **Masukkan Nama Lagu!** \nMisalnya: `/song Terminal Sukoharjo`"
         )
         print(str(e))
+        
+        #peeeeeeeeeeeeeeeeeeeeeeeeee
+        await mp.delete(k)
+        #peeeeeeeeeeeeeeeeeeeeeeeeee
+        
         return
     await k.edit("📥 **Mengunduh Lagu...**")
     try:
@@ -102,7 +112,7 @@ async def song(client, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        await k.edit("📤 **Uploading Song...**")
+        await k.edit("📤 **Mengunggah Lagu...**")
         await message.reply_audio(audio_file, caption=cap, parse_mode='HTML', title=title, duration=dur, performer=performer, thumb=thumb_name)
         await mp.delete(k)
         await mp.delete(message)
